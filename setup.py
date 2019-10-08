@@ -13,9 +13,21 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-import setuptools
+from setuptools import setup, find_packages
 
-setuptools.setup(
-    setup_requires=['pbr'],
-    pbr=True
+setup(
+    name="NETWORKING-F5",
+    version="2018.10",
+    packages=find_packages(),
+    zip_safe=False,
+    description="ML2 Driver for F5",
+    author = "F5",
+    author_email = "",
+    keywords=("plugin", "network", "F5"),
+    platforms="Linux",
+    url="www.f5.com <http://www.f5.com/> ",
+    entry_points={
+        'neutron.ml2.mechanism_drivers': [
+        'f5networks= networking_f5.plugins.ml2.drivers.f5.mech_f5networks_bigip:F5NetworksMechanismDriver']
+    },
 )
